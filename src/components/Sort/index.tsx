@@ -16,6 +16,9 @@ interface SortDisplayOption {
 	type: SortType;
 }
 
+/**
+ * Array of options to loop through -- dynamically creating the sort UI
+ */
 const sortDisplayOptions: SortDisplayOption[] = [
 	{
 		label: {
@@ -35,6 +38,7 @@ const sortDisplayOptions: SortDisplayOption[] = [
 	}
 ];
 
+// Function Component -- ToDoList handles state
 const Sort = ({
 	sortOption,
 	sortAscending,
@@ -59,6 +63,12 @@ const Sort = ({
 							aria-labelledby={`sortOption${sortDisplayOption.label.generic}`}
 							className={`sort-option reset-btn-style ${sortOption ===
 								sortDisplayOption.type && "active"}`}
+							/**
+							 * Set the sort option
+							 *
+							 * If the option is the same as the currently set option,
+							 * switch the sort direction
+							 */
 							onClick={() =>
 								sortOption !== sortDisplayOption.type
 									? setSortOption(sortDisplayOption.type)

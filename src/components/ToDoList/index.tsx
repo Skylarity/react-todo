@@ -26,11 +26,16 @@ import ToDoItem from "../../components/ToDoItem";
 import VisibilityFilter from "../../components/VisibilityFilter";
 import Sort from "../../components/Sort";
 
+// Function Component in order to use `useSelector` and `useDispatch` hooks
 function ToDoList() {
 	const todos: Item[] = useSelector(getFilteredToDos);
 	const sortOption: SortType = useSelector(getSortOption);
 	const sortAscending: boolean = useSelector(getSortAscending);
 	const filter: VisibilityType = useSelector(getFilter);
+
+	/**
+	 * To dispatch actions to the store
+	 */
 	const dispatch = useDispatch();
 
 	return (
@@ -67,6 +72,7 @@ function ToDoList() {
 					</div>
 				)}
 				{todos
+					// Sort To Dos based on sort option
 					.sort((a: Item, b: Item) => {
 						// Swap sort direction if not ascending
 						const asc = sortAscending ? -1 : 1;
@@ -77,8 +83,9 @@ function ToDoList() {
 								if (a.timestamp === b.timestamp) return 0;
 								return a.timestamp > b.timestamp ? asc : desc;
 							case SortType.Name:
+							// default to name sorting
 							default:
-								// Handle where upper case is less than lower case
+								// Handle type casing
 								let aLabel = a.label.toLowerCase();
 								let bLabel = b.label.toLowerCase();
 
@@ -86,6 +93,7 @@ function ToDoList() {
 								return aLabel < bLabel ? asc : desc;
 						}
 					})
+					// then create To Dos based on visibility
 					.map((todo: Item) => {
 						return (
 							<ToDoItem

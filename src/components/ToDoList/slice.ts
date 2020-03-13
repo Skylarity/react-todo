@@ -62,9 +62,12 @@ export const {addToDo, removeToDo, toggleToDoComplete} = slice.actions;
 
 export const getAllToDos = (state: RootState) => state.toDoList.toDos;
 
+/**
+ * Use createSelector (from reselect) here to make sure that we only
+ * calculate our filtered list of To Dos when necessary, saving precious cycles
+ */
 const getVisibilityFilter = (state: RootState) => state.visibilityFilter.filter;
 const getToDos = (state: RootState) => state.toDoList.toDos;
-
 export const getFilteredToDos = createSelector(
 	[getVisibilityFilter, getToDos],
 	(visibilityFilter: VisibilityType, todos: Item[]) =>

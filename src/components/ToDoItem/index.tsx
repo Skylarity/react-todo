@@ -8,6 +8,7 @@ interface TodoItemProps {
 	remove: () => void;
 }
 
+// Function Component -- ToDoList handles state
 const ToDoItem = ({todo, toggleComplete, remove}: TodoItemProps) => {
 	return (
 		<div

@@ -14,6 +14,9 @@ interface FilterDisplayOption {
 	type: VisibilityType;
 }
 
+/**
+ * Array of options to loop through -- dynamically creating the filter UI
+ */
 const filterDisplayOptions: FilterDisplayOption[] = [
 	{
 		label: "All",
@@ -29,6 +32,7 @@ const filterDisplayOptions: FilterDisplayOption[] = [
 	}
 ];
 
+// Function Component -- ToDoList handles state
 const VisibilityFilter = ({filter, setFilter}: VisibilityFilterProps) => {
 	return (
 		<div className="visibility-filters">

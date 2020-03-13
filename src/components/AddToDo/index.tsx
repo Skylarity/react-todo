@@ -13,6 +13,7 @@ interface AddToDoState {
 	placeholderIndex: number;
 }
 
+// Class Component -- we need local state here to keep track of the name of our new To Do
 class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 	placeholders: string[] = [
 		"Clear my mind",
@@ -31,13 +32,16 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 			placeholderIndex: 0
 		};
 
-		this.addToDoEl = createRef();
+		this.addToDoEl = createRef(); // So we can call .focus() after making our new To Do
 	}
 
 	componentDidMount() {
 		this.refreshPlaceholder();
 	}
 
+	/**
+	 * Adds our To Do to the store
+	 */
 	addToDo = (e: React.FormEvent) => {
 		e.preventDefault();
 
@@ -51,12 +55,18 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 		this.addToDoEl.current?.focus();
 	};
 
+	/**
+	 * Sets our To Do name in state
+	 */
 	handleTodoNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		this.setState({
 			todoName: e.target.value
 		});
 	};
 
+	/**
+	 * Randomly chooses placeholder text
+	 */
 	refreshPlaceholder = () => {
 		this.setState({
 			placeholderIndex: Math.floor(

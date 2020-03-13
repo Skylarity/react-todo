@@ -2,6 +2,7 @@
 	"name": "react-todo",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "/~skyler/react-todo",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.2.5",
 		"@testing-library/jest-dom": "^4.2.4",
