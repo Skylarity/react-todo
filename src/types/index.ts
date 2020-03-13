@@ -8,7 +8,3 @@ export enum SortType {
 	Name,
 	Date
 }
-
-export enum KeyCodes {
-	Enter = 13
-}

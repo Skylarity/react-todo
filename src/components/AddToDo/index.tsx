@@ -3,7 +3,6 @@ import React, {createRef, RefObject} from "react";
 import "./index.scss";
 
 import {Item} from "../../classes/Item";
-import {KeyCodes} from "../../types";
 
 interface AddToDoProps {
 	addToDo: (item: Item) => void;
@@ -38,7 +37,9 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 		this.refreshPlaceholder();
 	}
 
-	addToDo = () => {
+	addToDo = (e: React.FormEvent) => {
+		e.preventDefault();
+
 		this.props.addToDo(new Item(this.state.todoName));
 
 		this.setState({
@@ -47,14 +48,6 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 
 		this.refreshPlaceholder();
 		this.addToDoEl.current?.focus();
-	};
-
-	addToDoOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.keyCode === KeyCodes.Enter) {
-			e.preventDefault();
-
-			this.addToDo();
-		}
 	};
 
 	handleTodoNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +66,7 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 
 	render() {
 		return (
-			<div className="add-todo-container">
+			<form className="add-todo-container" onSubmit={this.addToDo}>
 				<label htmlFor="add-todo" className="sr-only">
 					Add a To Do
 				</label>
@@ -88,17 +81,16 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 					}")`}
 					value={this.state.todoName}
 					onChange={this.handleTodoNameChange}
-					onKeyDown={this.addToDoOnEnter}
 					autoFocus
 				/>
 				<button
 					className={`reset-btn-style add-btn ${this.state.todoName
 						.length > 0 && "active"}`}
-					onClick={this.addToDo}
+					type="submit"
 				>
 					Add
 				</button>
-			</div>
+			</form>
 		);
 	}
 }
