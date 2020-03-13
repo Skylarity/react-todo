@@ -89,7 +89,7 @@ function ToDoList() {
 					.map((todo: Item) => {
 						return (
 							<ToDoItem
-								item={todo}
+								todo={todo}
 								toggleComplete={() =>
 									dispatch(toggleToDoComplete(todo.id))
 								}

@@ -5,11 +5,11 @@ import {RootState} from "../../store";
 import {VisibilityType} from "../../types";
 import {Item} from "../../classes/Item";
 
-interface ToDoListState {
+export interface ToDoListState {
 	toDos: Item[];
 }
 
-const initialState: ToDoListState = {
+export const initialState: ToDoListState = {
 	toDos: [
 		Item.serialize(
 			new Item("Have a great day", true, new Date("2019-10-18"))

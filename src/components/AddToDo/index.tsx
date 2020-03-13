@@ -15,9 +15,10 @@ interface AddToDoState {
 
 class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 	placeholders: string[] = [
-		"Clean the backyard",
-		"Take out the trash",
-		"Give the dog some belly rubs"
+		"Clear my mind",
+		"Take a deep breath",
+		"Do some stretches",
+		"Give myself a break"
 	];
 
 	addToDoEl: RefObject<HTMLInputElement>;
@@ -68,7 +69,7 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 		return (
 			<form className="add-todo-container" onSubmit={this.addToDo}>
 				<label id="addToDoLabel" htmlFor="add-todo" className="sr-only">
-					Add a To Do
+					To Do Name Input
 				</label>
 				<input
 					ref={this.addToDoEl}
@@ -77,14 +78,23 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 					id="addToDo"
 					name="add-todo"
 					aria-labelledby="addToDoLabel"
-					placeholder={`Add To Do (e.g. "${
+					placeholder={`Add To Do (e.g. ${
 						this.placeholders[this.state.placeholderIndex]
-					}")`}
+					})`}
 					value={this.state.todoName}
 					onChange={this.handleTodoNameChange}
 					autoFocus
 				/>
+				<label
+					id="addToDoButtonLabel"
+					htmlFor="add-todo-btn"
+					className="sr-only"
+				>
+					Add a To Do
+				</label>
 				<button
+					name="add-todo-btn"
+					aria-labelledby="addToDoButtonLabel"
 					className={`reset-btn-style add-btn ${this.state.todoName
 						.length > 0 && "active"}`}
 					type="submit"

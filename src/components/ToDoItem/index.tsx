@@ -3,22 +3,34 @@ import "./index.scss";
 import {Item} from "../../classes/Item";
 
 interface TodoItemProps {
-	item: Item;
+	todo: Item;
 	toggleComplete: () => void;
 	remove: () => void;
 }
 
-const ToDoItem = ({item, toggleComplete, remove}: TodoItemProps) => {
+const ToDoItem = ({todo, toggleComplete, remove}: TodoItemProps) => {
 	return (
 		<div
-			className={`todo-list-item pill ${item.completed ? "checked" : ""}`}
+			id={`toDo${todo.id}`}
+			title={`To Do ${todo.id}`}
+			className={`todo-list-item pill ${todo.completed ? "checked" : ""}`}
 		>
-			<button className="btn check-btn" onClick={toggleComplete}>
+			<label
+				id="toggleToDoLabel"
+				className="sr-only"
+				htmlFor={`Toggle ToDo ${todo.id} Complete`}
+			>{`Toggle To Do ${todo.id} Complete`}</label>
+			<button
+				className="btn check-btn"
+				name={`Toggle ToDo ${todo.id} Complete`}
+				aria-labelledby="toggleToDoLabel"
+				onClick={toggleComplete}
+			>
 				<i
-					className={item.completed ? "gg-check-o" : "gg-radio-check"}
+					className={todo.completed ? "gg-check-o" : "gg-radio-check"}
 				/>
 			</button>
-			<span className="label">{item.label}</span>
+			<span className="label">{todo.label}</span>
 			<button className="btn close-btn" onClick={remove}>
 				<i className="gg-close-o" />
 			</button>

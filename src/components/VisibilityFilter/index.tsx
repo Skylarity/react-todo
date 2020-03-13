@@ -34,8 +34,18 @@ const VisibilityFilter = ({filter, setFilter}: VisibilityFilterProps) => {
 		<div className="visibility-filters">
 			{filterDisplayOptions.map(
 				(filterDisplayOption: FilterDisplayOption, i: number) => {
-					return (
+					return [
+						<label
+							id={`visibilityFilter${filterDisplayOption.label}`}
+							className="sr-only"
+							key={`fdo-label-${i}`}
+							htmlFor={`visibility-filter-${filterDisplayOption.label.toLowerCase()}`}
+						>
+							Filter by {filterDisplayOption.label}
+						</label>,
 						<button
+							name={`visibility-filter-${filterDisplayOption.label.toLowerCase()}`}
+							aria-labelledby={`visibilityFilter${filterDisplayOption.label}`}
 							className={`visibility-filter reset-btn-style ${filter ===
 								filterDisplayOption.type && "active"}`}
 							onClick={() => setFilter(filterDisplayOption.type)}
@@ -45,7 +55,7 @@ const VisibilityFilter = ({filter, setFilter}: VisibilityFilterProps) => {
 								{filterDisplayOption.label}
 							</div>
 						</button>
-					);
+					];
 				}
 			)}
 		</div>
