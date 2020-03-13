@@ -67,15 +67,16 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 	render() {
 		return (
 			<form className="add-todo-container" onSubmit={this.addToDo}>
-				<label htmlFor="add-todo" className="sr-only">
+				<label id="addToDoLabel" htmlFor="add-todo" className="sr-only">
 					Add a To Do
 				</label>
 				<input
 					ref={this.addToDoEl}
 					className="add-todo pill"
 					type="text"
-					name="add-todo"
 					id="addToDo"
+					name="add-todo"
+					aria-labelledby="addToDoLabel"
 					placeholder={`Add To Do (e.g. "${
 						this.placeholders[this.state.placeholderIndex]
 					}")`}
