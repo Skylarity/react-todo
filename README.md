@@ -1,3 +1,21 @@
+## Methodology
+
+Based on the project requirements this sounded exactly like a To Do application, so that's the direction I headed in terms of naming and labelling everything.
+
+I initially used Create React App with the TypeScript template to generate my project, and shortly after that discovered the [Redux+TypeScript](https://github.com/reduxjs/cra-template-redux-typescript) template (which seems to have just been released), so I ended up re-initializing the project with that template.
+
+I implemented redux in my components and tests following the patterns laid out in the CRA template I used, which were quite verbose, but I also see how it's a very powerful system. I didn't end up writing any asynchronous tests because it wasn't necessary for my application.
+
+I chose to use SCSS and manually implement a light styling instead of using something like Bootstrap or React Material because I wanted to have a nice custom interface without fighting with a framework, and my application is not complex enough to require most of the boilerplate those frameworks provide.
+
+## Future changes
+
+Something that I really wanted to do but couldn't due to time restrictions on this project was to create a separate library with each of the components in it, and `npm install/link` it into this project so as to have a separation of concerns from the app logic and the actuall stateless components such as the `ToDoItem`, `AddToDo`, and the sort and visibility components.
+
+I would also like to add edit functionality to each To Do, as well as "Clear Completed" and "Clear All" buttons (with warning prompts).
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
