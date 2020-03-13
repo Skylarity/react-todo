@@ -1,0 +1,31 @@
+@import "../../scss/partials/variables";
+
+.sort-list {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: $spacing-lg 0;
+	width: 100%;
+
+	.sort-option {
+		display: flex;
+		align-items: center;
+
+		opacity: $opacity-inactive;
+
+		cursor: pointer;
+
+		transition: opacity $transition-short;
+
+		&:hover,
+		&.active {
+			opacity: 1;
+			box-shadow: none;
+		}
+
+		.sort-option-label {
+			margin-right: $spacing-sm;
+		}
+	}
+}

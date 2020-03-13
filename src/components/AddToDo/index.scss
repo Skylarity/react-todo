@@ -1,0 +1,22 @@
+@import "../../scss/partials/variables";
+
+.add-todo {
+	@include neumorph(0);
+
+	box-sizing: border-box;
+
+	margin: $spacing-xl $spacing-lg;
+	padding: $spacing-sm $spacing-md;
+	width: calc(100% - (#{$spacing-lg}) * 2);
+
+	border: none;
+
+	transition: box-shadow $transition-short;
+
+	&:focus,
+	&:active {
+		@include neumorph(1rem);
+
+		outline: none;
+	}
+}

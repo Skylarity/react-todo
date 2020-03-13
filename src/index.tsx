@@ -1,10 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// React
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Redux
+import {Provider} from "react-redux";
+import {store} from "./store";
+
+// CSS
+import "normalize.css";
+import "css.gg/icons-compressed/icons.css";
+import "./index.scss";
+
+// Main App
+import App from "./App";
+
+// Service worker
+import * as serviceWorker from "./serviceWorker";
+
+// Initialize
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

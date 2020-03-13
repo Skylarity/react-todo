@@ -1,0 +1,66 @@
+@import "../../scss/partials/variables";
+
+.todo-list-item {
+	display: flex;
+	align-items: center;
+
+	margin: $spacing-sm 0;
+	padding: $spacing-sm $spacing-md;
+
+	transition: background-color $transition-short;
+
+	&:last-child {
+		margin-bottom: $spacing-md;
+	}
+
+	&:hover {
+		.close-btn {
+			opacity: 1;
+		}
+	}
+
+	&.checked {
+		.label {
+			text-decoration: line-through;
+			opacity: $opacity-inactive;
+		}
+
+		.check-btn {
+			color: $color-success;
+		}
+	}
+
+	.btn {
+		border: none;
+		background: transparent;
+
+		cursor: pointer;
+
+		&:active,
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.check-btn {
+		transition: color $transition-short;
+	}
+
+	.label {
+		flex: 1;
+	}
+
+	.close-btn {
+		margin-left: $spacing-md;
+
+		opacity: 0;
+
+		color: $color-danger;
+
+		transition: opacity $transition-short, color $transition-short;
+
+		&:hover {
+			color: darken($color-danger, $color-shift);
+		}
+	}
+}

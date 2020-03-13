@@ -1,0 +1,44 @@
+// ***** COLORS ***** //
+$color-light: rgba(#fff, 0.9);
+$color-dark: rgba(#000, 0.25);
+
+$color-primary: #508cff;
+$color-success: #12b83c;
+$color-danger: #ff4a4a;
+$color-grey: #dddddd;
+$color-dark-grey: #cccccc;
+
+$color-text: #444;
+
+$opacity-inactive: 0.5;
+
+$color-shift: 15%; // e.g. darken($color-danger, $color-shift);
+
+// ***** SPACING ***** //
+$spacer: 1rem;
+
+$spacing-sm: $spacer * 0.5;
+$spacing-md: $spacer;
+$spacing-lg: $spacer * 1.5;
+$spacing-xl: $spacer * 2;
+
+$border-radius-sm: $spacer * 0.5;
+$border-radius-md: $spacer;
+$border-radius-lg: $spacer * 2;
+
+// ***** NEUMORPHISM ***** //
+@mixin neumorph($size) {
+	border-radius: $border-radius-md;
+
+	background: $color-grey;
+
+	box-shadow: -#{$size / 3} -#{$size / 3} #{$size} $color-light,
+		#{$size / 3} #{$size / 3} #{$size} $color-dark;
+}
+
+// ***** ICONS ***** //
+$css-gg-size: 20px;
+
+// ***** TIMING ***** //
+$transition-short: 0.2s;
+$transition-long: 0.6s;

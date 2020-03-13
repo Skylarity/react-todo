@@ -1,0 +1,39 @@
+@import "../../scss/partials/variables";
+
+.todo-list {
+	@include neumorph(3rem);
+
+	display: flex;
+	flex-direction: column;
+
+	padding: $spacing-md;
+	width: calc(100vw - (#{$spacing-lg} * 2));
+	max-height: calc(100vh - (#{$spacing-xl} * 2));
+
+	@media only screen and (min-width: 600px) {
+		min-width: 400px;
+		width: 33vw;
+		max-width: 600px;
+		max-height: calc(80vh - (#{$spacing-lg} * 2));
+	}
+
+	.title {
+		margin: $spacing-md 0 $spacing-xl;
+
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 200;
+	}
+
+	.todos {
+		flex: 1;
+		overflow-y: auto;
+
+		.done-msg {
+			padding: $spacing-md 0;
+			opacity: $opacity-inactive;
+
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+@import "../../scss/partials/variables";
+
+.visibility-filters {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: $spacing-lg 0;
+	width: 100%;
+
+	.visibility-filter {
+		display: flex;
+		align-items: center;
+
+		opacity: $opacity-inactive;
+
+		cursor: pointer;
+
+		transition: opacity $transition-short;
+
+		&:hover,
+		&.active {
+			opacity: 1;
+			box-shadow: none;
+		}
+	}
+}
