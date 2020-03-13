@@ -1,22 +1,49 @@
 @import "../../scss/partials/variables";
 
-.add-todo {
-	@include neumorph(0);
+.add-todo-container {
+	display: flex;
+	align-items: center;
 
-	box-sizing: border-box;
+	.add-todo {
+		@include neumorph(0);
 
-	margin: $spacing-xl $spacing-lg;
-	padding: $spacing-sm $spacing-md;
-	width: calc(100% - (#{$spacing-lg}) * 2);
+		flex: 1;
 
-	border: none;
+		box-sizing: border-box;
 
-	transition: box-shadow $transition-short;
+		margin: $spacing-xl $spacing-lg;
+		padding: $spacing-sm $spacing-md;
+		width: calc(100% - (#{$spacing-lg}) * 2);
 
-	&:focus,
-	&:active {
-		@include neumorph(1rem);
+		border: none;
 
-		outline: none;
+		transition: box-shadow $transition-short;
+
+		&:focus,
+		&:active {
+			@include neumorph(1rem);
+
+			outline: none;
+		}
+	}
+
+	.add-btn {
+		@include neumorph(0);
+
+		margin: $spacing-xl $spacing-lg;
+		padding: $spacing-sm $spacing-md;
+
+		color: $color-text;
+
+		opacity: $opacity-inactive;
+		cursor: pointer;
+
+		transition: opacity $transition-short, box-shadow $transition-short;
+
+		&.active {
+			@include neumorph(1rem);
+
+			opacity: 1;
+		}
 	}
 }

@@ -16,6 +16,18 @@ body {
 	}
 
 	// ***** UTILITY ***** //
+	.sr-only {
+		// Borrowed from: https://stackoverflow.com/a/19758620/2651657
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
 	.pill {
 		border-radius: 999px;
 	}

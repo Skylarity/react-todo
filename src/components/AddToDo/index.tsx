@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef, RefObject} from "react";
 
 import "./index.scss";
 
@@ -21,6 +21,8 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 		"Give the dog some belly rubs"
 	];
 
+	addToDoEl: RefObject<HTMLInputElement>;
+
 	constructor(props: AddToDoProps) {
 		super(props);
 
@@ -28,23 +30,30 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 			todoName: "",
 			placeholderIndex: 0
 		};
+
+		this.addToDoEl = createRef();
 	}
 
 	componentDidMount() {
 		this.refreshPlaceholder();
 	}
 
-	addToDo = (e: React.KeyboardEvent<HTMLInputElement>) => {
+	addToDo = () => {
+		this.props.addToDo(new Item(this.state.todoName));
+
+		this.setState({
+			todoName: ""
+		});
+
+		this.refreshPlaceholder();
+		this.addToDoEl.current?.focus();
+	};
+
+	addToDoOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.keyCode === KeyCodes.Enter) {
 			e.preventDefault();
 
-			this.props.addToDo(new Item(this.state.todoName));
-
-			this.setState({
-				todoName: ""
-			});
-
-			this.refreshPlaceholder();
+			this.addToDo();
 		}
 	};
 
@@ -64,18 +73,32 @@ class AddToDo extends React.Component<AddToDoProps, AddToDoState> {
 
 	render() {
 		return (
-			<input
-				className="add-todo pill"
-				type="text"
-				name="add-todo"
-				id="addTodo"
-				placeholder={`Add To Do (e.g. "${
-					this.placeholders[this.state.placeholderIndex]
-				}")`}
-				value={this.state.todoName}
-				onChange={this.handleTodoNameChange}
-				onKeyDown={this.addToDo}
-			/>
+			<div className="add-todo-container">
+				<label htmlFor="add-todo" className="sr-only">
+					Add a To Do
+				</label>
+				<input
+					ref={this.addToDoEl}
+					className="add-todo pill"
+					type="text"
+					name="add-todo"
+					id="addToDo"
+					placeholder={`Add To Do (e.g. "${
+						this.placeholders[this.state.placeholderIndex]
+					}")`}
+					value={this.state.todoName}
+					onChange={this.handleTodoNameChange}
+					onKeyDown={this.addToDoOnEnter}
+					autoFocus
+				/>
+				<button
+					className={`reset-btn-style add-btn ${this.state.todoName
+						.length > 0 && "active"}`}
+					onClick={this.addToDo}
+				>
+					Add
+				</button>
+			</div>
 		);
 	}
 }

@@ -24,7 +24,9 @@ export const slice = createSlice({
 	reducers: {
 		addToDo: (state: ToDoListState, toDoAction: PayloadAction<Item>) => {
 			// Add the To Do
-			state.toDos.push(toDoAction.payload);
+			if (toDoAction.payload.label.length > 0) {
+				state.toDos.push(toDoAction.payload);
+			}
 		},
 		removeToDo: (state: ToDoListState, idAction: PayloadAction<string>) => {
 			// Get the index of the To Do
