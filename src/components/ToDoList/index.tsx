@@ -83,7 +83,8 @@ function ToDoList() {
 								if (a.timestamp === b.timestamp) return 0;
 								return a.timestamp > b.timestamp ? asc : desc;
 							case SortType.Name:
-							// default to name sorting
+							// default to name sorting, we know what we're doing
+							// eslint-disable-next-line
 							default:
 								// Handle type casing
 								let aLabel = a.label.toLowerCase();
