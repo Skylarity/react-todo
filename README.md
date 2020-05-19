@@ -12,6 +12,8 @@ I chose to use SCSS and manually implement a light styling instead of using some
 
 Something that I really wanted to do but couldn't due to time restrictions on this project was to create a separate library with each of the components in it, and `npm install/link` it into this project so as to have a separation of concerns from the app logic and the actual stateless components such as the `ToDoItem`, `AddToDo`, and the sort and visibility components.
 
+I typically do a global import for SCSS variables in Vue projects (in `vue.config.js`), and I would like to do something similar here so I don't need to import them in each SCSS file.
+
 I would also like to add edit functionality to each To Do, as well as "Clear Completed" and "Clear All" buttons (with warning prompts).
 
 ---
